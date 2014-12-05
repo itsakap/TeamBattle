@@ -4,13 +4,28 @@ feature "Signing Up" do
   before do
     visit '/'
     click_link 'Sign up'
-  end
-
-  scenario 'successfully sign up' do
+    fill_in "Name", with: "Adam"
     fill_in "Email", with: "adam@aol.com"
     fill_in "Password", with: "password"
     fill_in "Password Confirmation", with: "password"
+  end
+
+  scenario 'successfully sign up' do
     click_button "Sign up"
     expect(page).to have_content("You have signed up successfully.")
   end
+
+  scenario 'x+y+z exceeds 10' do
+    fill_in "x", with: 100
+    click_button "Sign up"
+    expect(page).to have_content("Player could not be created.")
+  end
+
+  scenario 'x, y, z all must be non-negative' do
+    fill_in "x", with: -1
+    click_button "Sign up"
+    expect(page).to have_content("Player could not be created.")
+  end
+
+
 end
