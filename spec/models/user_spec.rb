@@ -1,4 +1,4 @@
-# User_spec.rb
+# user_spec.rb
 require 'spec_helper'
 
 describe User do
@@ -52,7 +52,7 @@ describe User do
     end
   end
   describe 'stats' do
-    it 'calculates attack_power, hp, and heal_power based on x, y, z values' do
+    it 'calculates hp, attack_power, and heal_power based on x, y, z values respectively' do
       user = FactoryGirl.create(:user)
       expect(user.hp).to eq(200 + (10 * user.x))
       expect(user.attack_power).to eq(20 + user.y)

@@ -9,6 +9,8 @@
 <body>
   <nav>
     <%= link_to "Sign up", new_user_path %>
+    <%= link_to "Sign in", sign_in_path %>
+    <%= link_to "Sign out", sign_out_path, method: :delete %>
   </nav>
   <% flash.each do |key, value| %>
   <div class='flash' id='<%= key %>'>
