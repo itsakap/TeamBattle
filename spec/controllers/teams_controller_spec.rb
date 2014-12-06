@@ -7,6 +7,6 @@ describe TeamsController, type: :controller do
   end
   it 'promotes user to captain upon creation of team' do
     post :create, :team => {:name => 'aaa'}
-    expect(User.find(user.id).captain?).to be(true)
+    expect(user.reload.captain?).to be(true)
   end
 end
