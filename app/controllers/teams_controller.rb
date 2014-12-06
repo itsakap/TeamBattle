@@ -8,8 +8,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      @team.users.push(current_user)
-      current_user.captain?=true
+      current_user.update(:captain? => true)
       flash[:notice]="Team created successfully."
       redirect_to root_path
     else
