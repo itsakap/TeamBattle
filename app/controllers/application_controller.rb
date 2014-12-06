@@ -9,4 +9,12 @@ private
   end
   helper_method :current_user
 
+  def login_required!
+    if current_user.nil?
+      flash[:error] = "You need to sign in or sign up before continuing"
+      redirect_to sign_in_path
+    end
+  end
+  helper_method :login_required!
+
 end

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'teams/new'
+
   root 'users#index'
   resources :users
+  resources :teams
   get 'sign_in', to: "sessions#new"
   post 'sign_in', to: "sessions#create"
   delete '/sign_out', to: "sessions#destroy", as: "sign_out"
