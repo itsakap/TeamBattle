@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include ActiveModel::Validations
+  belongs_to :team
   validates_presence_of :email
   validates_presence_of :name
   validate :stats_sum_does_not_exceed_max

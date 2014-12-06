@@ -1,0 +1,10 @@
+<!-- show.html.erb -->
+<h2><%= @team.name %></h2>
+
+<ol id="teammates">
+  <% @team.users.each do |user| %>
+    <li><%= user.name %> <%= user.captain? ? "- #{user.email} (captain)" : "" %> <%= user.id == current_user.id ? "(you)" : "" %></li>
+  <% end %>
+</ol>
+
+<%= button_to "Join team", @team, {method: :put} %>
