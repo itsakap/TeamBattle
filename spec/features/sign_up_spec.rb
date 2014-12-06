@@ -15,8 +15,8 @@ feature "Signing Up" do
     expect(page).to have_content("You have signed up successfully.")
   end
 
-  scenario 'x+y+z exceeds 10' do
-    fill_in "x", with: 100
+  scenario 'x+y+z exceeds stats_sum_maximum' do
+    fill_in "x", with: User.stats_sum_maximum+1
     click_button "Sign up"
     expect(page).to have_content("Player could not be created.")
   end
