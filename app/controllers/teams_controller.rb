@@ -1,5 +1,8 @@
 class TeamsController < ApplicationController
   before_action :login_required!
+  def index
+    @teams = Team.all
+  end
   def new
     @team = Team.new
   end

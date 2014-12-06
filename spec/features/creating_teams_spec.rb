@@ -12,8 +12,10 @@ feature 'creating teams' do
   scenario 'creating a team' do
     click_link 'Create team'
     expect(page).to have_content("Team Name")
+
     fill_in 'Team Name', with: 'Sentinels'
     click_button "Create Team"
     expect(page).to have_content("Team created successfully.")
+    expect(user.reload.captain?).to be(true)
   end
 end
