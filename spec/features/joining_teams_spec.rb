@@ -2,6 +2,7 @@
 require 'spec_helper'
 feature 'joining a team' do
   let!(:team) { FactoryGirl.create(:team) }
+  let!(:enemy_team) { FactoryGirl.create(:team) }
   let!(:team_captain) { FactoryGirl.create(:team_captain, team: team) }
   let!(:user) { FactoryGirl.create(:user) }
 
@@ -23,4 +24,5 @@ feature 'joining a team' do
     click_button 'Join team'
     expect(page).to have_content("You are already on this team: #{Team.find(user.reload.team_id).name}")
   end
+
 end

@@ -12,12 +12,12 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     if @team.save
       current_user.update(:captain? => true)
+      @team.users.push(current_user)
       flash[:notice]="Team created successfully."
-      redirect_to root_path
     else
       flash[:alert]="Team was not created."
-      redirect_to root_path
     end
+    redirect_to root_path 
   end
 
   def show
@@ -28,7 +28,6 @@ class TeamsController < ApplicationController
       @team.users.push(current_user)
       flash[:notice] = "Successfully joined team. You are now a member of this team: #{@team.name}"
     else
-
       flash[:alert] = "You are already on this team: #{Team.find(current_user.team_id).name}."
     end
     redirect_to @team

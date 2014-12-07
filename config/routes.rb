@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'teams/new'
-
   root 'users#index'
-  resources :users
-  resources :teams
+  resources :users, except: [:index, :destroy]
+  resources :teams, except: [:edit, :destroy]
   get 'sign_in', to: "sessions#new"
   post 'sign_in', to: "sessions#create"
   delete '/sign_out', to: "sessions#destroy", as: "sign_out"
+  namespace :team_captain do
+    resources :teams, except: [:index, :new, :create]
+    resources :games
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

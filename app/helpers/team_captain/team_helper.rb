@@ -1,0 +1,2 @@
+module TeamCaptain::TeamHelper
+end
