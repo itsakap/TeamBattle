@@ -18,8 +18,7 @@ class TeamCaptain::TeamsController < ApplicationController
     user = User.find(params[:user_id])
     if user.team_id == current_user.team_id && user.id != current_user.id
       @team.users.delete(user)
-      binding.pry
-      flash[:notice] = "Removed #{@user.name} from team"
+      flash[:notice] = "Removed #{user.name} from team"
     else
       flash[:error] = "Sorry"
     end
