@@ -1,4 +1,24 @@
 <!-- show.html.erb -->
+<h2><%= @team.name %></h2>
+
+<%= form_for [:team_captain, @team] do |f| %>
+  <% if @team.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= pluralize(@team.errors.count, "error") %>
+       prohibited this user from being saved:</h2>
+     <ul>
+     <% @team.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+   </div>
+  <% end %>
+  <%= f.label :name, "Team Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.submit %>
+<% end %>
+
 <div id="teammates">
   <ul>
   <%= @team.users.each do |u| %>
@@ -8,6 +28,7 @@
         <li>Attack: <%= u.attack_power %></li>
         <li>Heal: <%= u.heal_power %></li>
       </ul>
+      <%= button_to "Remove #{u.name} from team", team_captain_remove_user_path(@team, u), method: :patch %>
     </li>
   <% end %>
   </ul>

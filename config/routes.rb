@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   post 'sign_in', to: "sessions#create"
   delete '/sign_out', to: "sessions#destroy", as: "sign_out"
   namespace :team_captain do
-    resources :teams, except: [:index, :new, :create]
+    resources :teams, only: [:show, :update]
+    patch 'teams/:id/:user_id', to: "teams#remove_user_from_team", as: "remove_user"
     resources :games
   end
   # The priority is based upon order of creation: first created -> highest priority.
