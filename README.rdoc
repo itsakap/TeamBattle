@@ -22,3 +22,9 @@
   <li>You will receive an e-mail with updates on who took damage, who was eliminated, etc...</li>
   <li>Game ends when one team is left uneliminated.</li>
 </ol>
+
+== To do
+- team captain creates or joins game for the team
+- after game's start time, every 24 hours an e-mail goes out to all users in the game summarizing actions & outcomes
+- elimination conditions
+- win conditions
