@@ -17,5 +17,12 @@ private
   end
   helper_method :login_required!
 
+  def team_captain_required!
+    unless current_user.captain? && @team.id == current_user.team_id
+      flash[:alert] = "You must be this team's team captain to do that."
+      redirect_to root_path
+    end
+  end
+  helper_method :team_captain_required!
 
 end

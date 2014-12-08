@@ -33,12 +33,7 @@ class TeamCaptain::TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(:name)
   end
-  def team_captain_required!
-    unless current_user.captain? && @team.id == current_user.team_id
-      flash[:alert] = "You must be this team's team captain to do that."
-      redirect_to root_path
-    end
-  end
+
 
 
 end

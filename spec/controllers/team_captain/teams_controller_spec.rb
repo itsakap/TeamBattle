@@ -1,4 +1,4 @@
-# users_controller_spec.rb
+# teams_controller_spec.rb
 require 'spec_helper'
 describe TeamCaptain::TeamsController, type: :controller do
   let!(:team) { FactoryGirl.create(:team) }

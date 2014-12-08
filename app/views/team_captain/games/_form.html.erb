@@ -1,0 +1,11 @@
+<!-- _form.html.erb -->
+<%= form_for [:team_captain, @game] do |f| %>
+  <p>
+    <%= f.label :name, "Game Name" %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
