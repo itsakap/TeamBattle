@@ -12,7 +12,7 @@
   <li>Your team's team captain is responsible for creating or joining a game.</li>
   <li>Once a game has started, every 24 hours beginning at midnight PST, you can either attack, heal, defend, or surrender.
     <ul>
-      <li><strong>Attack</strong> lowers the HP of one player of opposing team by your attack power.  Eliminate players by lowering their HP to 0 or below.</li>
+      <li><strong>Attack</strong> decreases the HP of one player of opposing team by your attack power.  Eliminate players by lowering their HP to 0 or below.</li>
       <li><strong>Heal</strong> increases the HP of one player of your team by your heal power (can go above your starting HP).  Prevent players on your team from losing too much HP!</li>
       <li><strong>Defend</strong> prevents any attacks dealt to you by opponents in the next turn.</li>
       <li><strong>Surrender</strong> eliminates yourself during the next turn.</li>
