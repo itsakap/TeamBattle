@@ -1,0 +1,8 @@
+<!-- show.html.erb -->
+<h2>Teams in <%= @game.name %></h2>
+<ul>
+<% @game.teams.each do |team| %>
+  <li><%= team.name %></li>
+<% end %>
+</ul>
+<%= button_to "Join #{@game.name}", team_captain_join_game_path(@game), method: :patch %>

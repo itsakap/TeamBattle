@@ -18,7 +18,7 @@ feature 'creating game' do
     expect(page).to have_content('Game was successfully created')
   end
 
-  scenario 'no name game is not created' do
+  scenario 'game with invalid attributes is not created' do
     click_button 'Create Game'
     expect(page).to have_content('Game was not created')
   end

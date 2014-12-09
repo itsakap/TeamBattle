@@ -13,6 +13,7 @@
       <%= link_to "Sign out", sign_out_path, method: :delete %>
       <% team_captains_only do %>
         <%= link_to "New Game", new_team_captain_game_path %>
+        <%= link_to "Join Game", team_captain_games_path %>
         <%= link_to "Team Captain", team_captain_team_path(current_user.team_id) %>
       <% end %>
     <% else %>
@@ -29,6 +30,7 @@
 
   <footer>
     (Made by some buddy from California named <%= link_to "Adam", "http://www.itsakap.com" %>)
+    <%= link_to "View this project's GitHub repo", "http://www.github.com/adamhkaplan/TeamAttack" %>
   </footer>
 </body>
 </html>

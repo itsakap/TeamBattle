@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   namespace :team_captain do
     resources :teams, only: [:show, :update]
     patch 'teams/:id/:user_id', to: "teams#remove_user_from_team", as: "remove_user"
-    resources :games
+    resources :games, only: [:index, :show, :new, :create]
+    patch 'games/:id', to: 'games#join_game', as: "join_game"
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

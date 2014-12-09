@@ -24,7 +24,6 @@
 </ol>
 
 == To do
-- team captain can remove members from team
 - team captain creates or joins game for the team
 - after game's start time, every 24 hours an e-mail goes out to all users in the game summarizing actions & outcomes
 - elimination conditions

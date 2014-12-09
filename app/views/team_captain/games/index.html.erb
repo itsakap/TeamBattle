@@ -1,0 +1,7 @@
+<!-- index.html.erb -->
+<h2>Available Games</h2>
+<ul>
+<% @games.each do |game| %>
+  <li><%= link_to game.name, team_captain_game_path(game) %></li>
+<% end %>
+</ul>
