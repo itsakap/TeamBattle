@@ -10,10 +10,10 @@
 2. Join a team, or create a team as its team captain.
 3. Your team's team captain is responsible for creating or joining a game.
 4. Once a game has started, every 24 hours beginning at midnight PST, you can either attack, heal, defend, or surrender.
-* <b>Attack</b> decreases the HP of one player of opposing team by your attack power.  Eliminate players by lowering their HP to 0 or below.
-* <b>Heal</b> increases the HP of one player of your team by your heal power (can go above your starting HP).  Prevent players on your team from losing too much HP!
-* <b>Defend</b> prevents any attacks dealt to you by opponents in the next turn.
-* <b>Surrender</b> eliminates yourself during the next turn.
+   1. <b>Attack</b> decreases the HP of one player of opposing team by your attack power.  Eliminate players by lowering their HP to 0 or below.
+   2. <b>Heal</b> increases the HP of one player of your team by your heal power (can go above your starting HP).  Prevent players on your team from losing too much HP!
+   3. <b>Defend</b> prevents any attacks dealt to you by opponents in the next turn.
+   4. <b>Surrender</b> eliminates yourself during the next turn.
 5. Your team's team captain has access to team's e-mail addresses & stats, and will help point teammates in the direction of what to do.
 6. You will receive an e-mail with updates on who took damage, who was eliminated, etc...
 7. Game ends when one team is left uneliminated.
