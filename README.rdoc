@@ -4,6 +4,7 @@
 == Technology/Methods
 - Ruby on Rails
 - BDD
+- Craigslist styling (subject to change)
 
 == Rules (subject to change)
 1. Create your account, and allocate your stats.
