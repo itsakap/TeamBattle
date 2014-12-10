@@ -19,7 +19,7 @@
 7. Game ends when one team is left uneliminated.
 
 == To do
-- team captain creates or joins game for the team
+- dashboard for actions
 - after game's start time, every 24 hours an e-mail goes out to all users in the game summarizing actions & outcomes
 - elimination conditions
 - win conditions
