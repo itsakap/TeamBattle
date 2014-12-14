@@ -1,6 +1,8 @@
+# player/moves_controller.rb
 class Player::MovesController < ApplicationController
   before_action :set_move
   before_action :login_required!
+  before_action :game_started!
   def edit
   end
 

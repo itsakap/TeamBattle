@@ -31,10 +31,19 @@ private
 
   def team_captain_required!
     unless current_user.captain? && @team.id == current_user.team_id
-      flash[:alert] = "You must be this team's team captain to do that."
+      flash[:alert] = "You must be this team's team captain to continue."
       redirect_to root_path
     end
   end
   helper_method :team_captain_required!
 
+  def game_started!
+    if current_game
+      unless current_game.started?
+        flash[:alert] = "Please wait for the game to start before continuing."
+        redirect_to root_path
+      end
+    end
+  end
+  helper_method :game_started!
 end

@@ -3,6 +3,7 @@ class TeamCaptain::GamesController < ApplicationController
   before_action :set_team
   before_action :set_game, only:[:show, :update, :join_game]
   before_action :team_captain_required!
+  before_action :no_game_required!, only:[:new, :create, :join_game]
   def index
     @games = Game.all
   end
@@ -51,15 +52,24 @@ class TeamCaptain::GamesController < ApplicationController
   end
 
   private
-  def set_game
-    @game = Game.find(params[:id])
-  end
-  
   def set_team
     @team = Team.find(current_user.team_id)
   end
 
+  def set_game
+    @game = Game.find(params[:id])
+  end
+  
+  def no_game_required!
+    if current_game
+      flash[:alert] = "You are already in this game: #{current_game.name}."
+      redirect_to root_path
+    end
+  end
+
+
   def game_params
     params.require(:game).permit(:name)
   end
+
 end

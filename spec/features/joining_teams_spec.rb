@@ -12,10 +12,10 @@ feature 'joining a team' do
   end
 
   scenario 'can join only one team' do
-    click_link 'Join a team'
+    click_link 'View & Join a Team'
     click_link team.name
     expect(page).to have_content( "#{team_captain.name} - #{team_captain.email} (captain)" )
-  
+    
     click_button 'Join team'
     expect(page).to have_content("Successfully joined team. You are now a member of this team: #{team.name}")
 

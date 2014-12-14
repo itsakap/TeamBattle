@@ -1,7 +1,7 @@
 <!-- index.html.erb -->
 <h2>All teams</h2>
 <ul>
-  <%= @teams.each do |team| %>
+  <% @teams.each do |team| %>
     <li><%= link_to team.name, team %></li>
   <% end %>
 </ul>

@@ -8,7 +8,7 @@ feature "Viewing Team" do
     visit '/'
   end
   scenario "Viewing all teams" do
-    click_link 'Join a team'
+    click_link 'View & Join a Team'
     expect(page).to have_content(team.name)
   end
 end
