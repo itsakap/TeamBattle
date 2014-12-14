@@ -24,13 +24,16 @@ class TeamsController < ApplicationController
   end
 
   def update
-    if current_user.team_id.nil?
-      @team.users.push(current_user)
+    if current_user.team_id.nil? # if current_user is not on a team yet
+      @team.users.push(current_user) # join this team
+      session[:team_id] = @team.id # set it as the current_team
       flash[:notice] = "Successfully joined team. You are now a member of this team: #{@team.name}"
+      redirect_to @team
     else
       flash[:alert] = "You are already on this team: #{Team.find(current_user.team_id).name}."
+      redirect_to '/'
     end
-    redirect_to @team
+    
   end
 
   private

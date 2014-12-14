@@ -1,10 +1,10 @@
 # user_factory.rb
 FactoryGirl.define do
-  sequence(:email) {|n| "user#{n}@aol.jp"}
-  sequence(:user) {|n| "xxuser#{n}xx"}
+  sequence(:email) { |n| "user#{n}@aol.jp" }
+  sequence(:username) { |n| "xxuser#{n}xx" }
   factory :user do
-    name {generate(:user)}
-    email {generate(:email)}
+    name { generate(:username) }
+    email { generate(:email) }
     password 'password'
     password_confirmation 'password'
     x 1

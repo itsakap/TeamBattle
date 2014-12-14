@@ -16,8 +16,10 @@ class TeamCaptain::TeamsController < ApplicationController
 
   def remove_user_from_team
     user = User.find(params[:user_id])
+    # if not trying to remove self and if user is on self's team
     if user.team_id == current_user.team_id && user.id != current_user.id
-      @team.users.delete(user)
+
+      @team.users.delete(user) # remove from team
       flash[:notice] = "Removed #{user.name} from team"
     else
       flash[:error] = "Sorry"

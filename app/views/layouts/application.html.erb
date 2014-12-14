@@ -8,6 +8,7 @@
 </head>
 <body>
   <nav>
+    <%= link_to "Home", root_path %>
     <% if current_user %>
       Signed in as <%=  "#{current_user.name} (#{current_user.email})" %>
       <%= link_to "Sign out", sign_out_path, method: :delete %>
@@ -15,6 +16,11 @@
         <%= link_to "New Game", new_team_captain_game_path %>
         <%= link_to "Join Game", team_captain_games_path %>
         <%= link_to "Team Captain", team_captain_team_path(current_user.team_id) %>
+      <% end %>
+      <% if current_game %>
+        <% in_game_only do %>
+          <%= link_to "My Game", player_move_path %>
+        <% end %>
       <% end %>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
@@ -29,8 +35,10 @@
   <%= yield %>
 
   <footer>
-    (Made by some buddy from California named <%= link_to "Adam", "http://www.itsakap.com" %>)
-    <%= link_to "View this project's GitHub repo", "http://www.github.com/adamhkaplan/TeamAttack" %>
+    (Made by some buddy from California named <%= link_to "Adam", "http://www.itsakap.com" %>).  
+    <%= link_to "View this project's GitHub repo",
+        "http://www.github.com/adamhkaplan/TeamBattle",
+        target: "_blank" %>
   </footer>
 </body>
 </html>

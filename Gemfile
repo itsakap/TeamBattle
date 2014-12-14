@@ -42,7 +42,10 @@ group :test, :development do
 end
 
 group :test do
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'pry'
   gem 'factory_girl_rails', '~> 4.2.1'
 end

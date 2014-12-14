@@ -1,0 +1,22 @@
+<!-- _form.html.erb -->
+<%= form_for [:player, @move] do |f| %>
+  <%= f.select :move_choice, ["Attack","Heal","Defend","Surrender"], {include_blank: true},{class: "move-choice", prompt: "Choose a Move"} %>
+  <%= f.select :target, options_from_collection_for_select([], "id", "name"),
+  {
+     include_blank: true
+  }, {     'data-option-dependent' => true,
+     'data-option-observed' => "move_move_choice",
+     'data-option-url' => "/player/target/:move_choice:.json",
+     'data-option-key-method' => :id,
+     'data-option-value-method' => :name}%>
+  <%= f.submit %>
+
+
+  <%#= select_tag :specialization_type_id, options_from_collection_for_select(SpecializationType.all, "id", "name"), :prompt => "Select a specialization type" %>
+  <%#= select_tag :specialization_id, options_from_collection_for_select([], "id", "name"),
+                 "data-option-dependent" => true,
+                 "data-option-observed" => "specialization_type_id",
+                 "data-option-url" => "/specialization_types/:specialization_type_id:/specializations.json",
+                 "data-option-key-method" => :id,
+                 "data-option-value-method" => :name %>
+<% end %>

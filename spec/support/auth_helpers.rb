@@ -14,4 +14,5 @@ end
 RSpec.configure do |c|
   c.include AuthHelpers, type: :feature
   c.include AuthHelpers, type: :controller
+  c.include AuthHelpers, type: :model
 end

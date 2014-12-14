@@ -9,6 +9,18 @@ private
   end
   helper_method :current_user
 
+  def current_team
+    @current_team ||= Team.find(session[:team_id]) if session[:team_id]
+  end
+  helper_method :current_team
+
+  def current_game
+    if current_team
+      @current_game ||= Game.find(current_team.game_id) if current_team.game_id
+    end
+  end
+  helper_method :current_game
+
   def login_required!
     if current_user.nil?
       flash[:error] = "You need to sign in or sign up before continuing"

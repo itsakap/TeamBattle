@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     resources :games, only: [:index, :show, :new, :create]
     patch 'games/:id', to: 'games#join_game', as: "join_game"
   end
+  namespace :player do
+    get 'move', to: 'moves#edit'
+    patch 'move', to: 'moves#update'
+    get 'target/:move_choice', to: 'games#target_team_users', as: 'target' 
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

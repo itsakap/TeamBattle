@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208205612) do
+ActiveRecord::Schema.define(version: 20141211224715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,18 @@ ActiveRecord::Schema.define(version: 20141208205612) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "started?",   default: false
   end
+
+  create_table "moves", force: true do |t|
+    t.string   "move_choice", default: "defend"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "target"
+  end
+
+  add_index "moves", ["user_id"], name: "index_moves_on_user_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name"
@@ -28,6 +39,7 @@ ActiveRecord::Schema.define(version: 20141208205612) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "game_id"
+    t.boolean  "started?",    default: false
   end
 
   add_index "teams", ["game_id"], name: "index_teams_on_game_id", using: :btree
@@ -44,8 +56,13 @@ ActiveRecord::Schema.define(version: 20141208205612) do
     t.integer  "y",               default: 0
     t.integer  "z",               default: 0
     t.integer  "team_id"
+    t.integer  "hp"
+    t.integer  "attack_power"
+    t.integer  "heal_power"
+    t.integer  "game_id"
   end
 
+  add_index "users", ["game_id"], name: "index_users_on_game_id", using: :btree
   add_index "users", ["team_id"], name: "index_users_on_team_id", using: :btree
 
 end

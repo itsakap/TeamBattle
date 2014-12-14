@@ -9,4 +9,7 @@ module ApplicationHelper
   def team_captains_only(&block)
     block.call if current_user.try(:captain?)
   end
+  def in_game_only(&block)
+    block.call if current_game.try(:started?)
+  end
 end

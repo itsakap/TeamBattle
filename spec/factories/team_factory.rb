@@ -1,7 +1,7 @@
 # team_factory.rb
 FactoryGirl.define do
-  sequence(:name) {|n| "team #{n}"}
+  sequence(:team_name) {|n| "team #{n}"}
   factory :team do
-    name {generate(:name)}
+    name { generate(:team_name) }
   end
 end
