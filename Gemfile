@@ -40,6 +40,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'whenever', :require => false
 
+gem 'rails_12factor'
+
 group :test, :development do
   gem 'rspec-rails'
 end
