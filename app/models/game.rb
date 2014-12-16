@@ -3,4 +3,5 @@ class Game < ActiveRecord::Base
   has_many :teams
   has_many :users
   # scope for available games (available to join)
+  scope :available, ->{ where(:started? => false) }
 end

@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_secure_password
   #TRIGGERS
   before_create :set_stats
+  #SCOPES
+  scope :alive, ->{ where(:eliminated? => false) }
 
   def self.stats_sum_maximum
     10
@@ -31,8 +33,7 @@ class User < ActiveRecord::Base
     self.attack_power = 20 + y
     self.heal_power = 20 + z
     self.build_move
-  end
-  
+  end 
 
 
 

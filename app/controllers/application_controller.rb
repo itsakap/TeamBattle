@@ -43,6 +43,9 @@ private
         flash[:alert] = "Please wait for the game to start before continuing."
         redirect_to root_path
       end
+    else
+        flash[:alert] = "Please wait for your game to start before continuing."
+        redirect_to root_path
     end
   end
   helper_method :game_started!

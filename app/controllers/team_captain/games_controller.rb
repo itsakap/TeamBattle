@@ -4,6 +4,7 @@ class TeamCaptain::GamesController < ApplicationController
   before_action :set_game, only:[:show, :update, :join_game]
   before_action :team_captain_required!
   before_action :no_game_required!, only:[:new, :create, :join_game]
+  before_action :game_not_in_progress_required!, only:[:join_game]
   def index
     @games = Game.all
   end
@@ -33,18 +34,13 @@ class TeamCaptain::GamesController < ApplicationController
       @game.teams.push(@team)
       # add user to game
       @game.users += @team.users
-      # start the game
+      # update DB to start the game
       @game.update(:started? => true)
-      session[:game_id] = @game.id
-      # prevent game's teams from being joined because started playing
-      
-      # game's users are now able to access the dashboard
-
-
+      @team.update(:started? => true)
 
       # do any preliminary e-mailing
 
-      flash[:notice] = "Successfully joined #{@game.name}. Game has started good luck!"
+      flash[:notice] = "Successfully joined #{@game.name}. Game has started, good luck!"
     else
       flash[:error] = "You are already in a game"
     end
@@ -67,6 +63,12 @@ class TeamCaptain::GamesController < ApplicationController
     end
   end
 
+  def game_not_in_progress_required!
+    if @game.started?
+      flash[:alert] = "This game is currently in progress. Please join a different game."
+      redirect_to root_path
+    end
+  end
 
   def game_params
     params.require(:game).permit(:name)

@@ -1,9 +1,9 @@
 class TeamsController < ApplicationController
   before_action :login_required!
-  before_action :no_team_required!, except: [:index, :show]
   before_action :set_team, only: [:show, :update]
+  before_action :no_team_required!, except: [:index, :show]
   def index
-    @teams = Team.all
+    @teams = Team.available
   end
   def new
     @team = Team.new
@@ -39,6 +39,10 @@ class TeamsController < ApplicationController
   end
   def set_team
     @team = Team.find(params[:id])
+    if @team.started?
+      flash[:alert] = "This team currently has a game in progress."
+      redirect_to teams_path
+    end
   end
   def no_team_required!
     if current_team # if current_user is not on a team yet
@@ -46,4 +50,5 @@ class TeamsController < ApplicationController
       redirect_to root_path
     end
   end
+
 end

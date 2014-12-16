@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'users#index'
-  resources :users, except: [:index, :destroy]
+  resources :users, only: [:new, :create]
   resources :teams, except: [:edit, :destroy]
   get 'sign_in', to: "sessions#new"
   post 'sign_in', to: "sessions#create"

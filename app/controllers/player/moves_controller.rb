@@ -24,5 +24,9 @@ class Player::MovesController < ApplicationController
   end
   def set_move
     @move = current_user.move
+    if current_user.eliminated?
+      flash[:alert] = "Sorry, you have already been eliminated."
+      redirect_to root_path
+    end
   end
 end
