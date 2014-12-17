@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: TeamBattle_production
-#  username: TeamBattle
-#  password: <%= ENV['TEAMBATTLE_DATABASE_PASSWORD'] %>
+  username: TeamBattle
+  password: <%= ENV['TEAMBATTLE_DATABASE_PASSWORD'] %>

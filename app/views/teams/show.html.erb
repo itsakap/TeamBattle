@@ -14,5 +14,6 @@
     </li>
   <% end %>
 </ol>
-
-<%= button_to "Join team", @team, {method: :put} %>
+<% unless current_team %>
+  <%= button_to "Join team", @team, {method: :put} %>
+<% end %>

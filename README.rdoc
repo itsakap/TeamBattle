@@ -9,7 +9,7 @@
 == Rules (subject to change)
 1. Create your account, and allocate your stats.
 2. Join a team, or create a team as its team captain.
-3. Your team's team captain is responsible for creating or joining a game.
+3. Your team's team captain is responsible for creating or joining a game, once s/he is happy with the team.
 4. Once two teams are in your game, every 24 hours beginning at midnight PST, you can either attack, heal, defend, or surrender.
    1. <b>Attack</b> decreases the HP of one player of opposing team by your attack power.  Eliminate players by lowering their HP to 0 or below.
    2. <b>Heal</b> increases the HP of one player of your team by your heal power (can go above your starting HP).  Prevent players on your team from losing too much HP!

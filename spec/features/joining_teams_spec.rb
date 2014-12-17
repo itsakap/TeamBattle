@@ -20,9 +20,6 @@ feature 'joining a team' do
     expect(page).to have_content("Successfully joined team. You are now a member of this team: #{team.name}")
 
     within("#teammates") { expect(page).to have_content(user.name) }
-    
-    click_button 'Join team'
-    expect(page).to have_content("You are already on this team: #{Team.find(user.reload.team_id).name}")
   end
 
 end
