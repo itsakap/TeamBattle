@@ -18,7 +18,7 @@
     </strong>
     <ol>
       <% team.users.each do |user| %>
-        <li><%= user.name  %><%= "- #{user.email}" + " (captain)" if user.captain? %>
+        <li><%= user.name  %><%= "- #{user.email}" + " (captain)" if user.captain? %><%= " (you)" if current_user.id == user.id %>
           <ul>
             <% if current_team.id == team.id %>
               <li>HP: <%= user.hp %></li>
