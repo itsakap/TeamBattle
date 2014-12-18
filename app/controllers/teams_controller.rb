@@ -29,6 +29,7 @@ class TeamsController < ApplicationController
   def update
     @team.users.push(current_user) # join this team
     session[:team_id] = @team.id # set it as the current_team
+    current_user.update(:game_id => @team.game_id)
     flash[:notice] = "Successfully joined team. You are now a member of this team: #{@team.name}"
     redirect_to @team
   end

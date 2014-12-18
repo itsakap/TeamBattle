@@ -11,6 +11,7 @@ feature 'viewing team' do
   end
   scenario 'can view its own team' do
     expect(page).to have_content(team_captain.name)
-    expect(page).to have_content(team_captain.hp)
+    expect(page).to have_content(team_captain.email)
+    expect(page).to have_content("(you)")
   end
 end

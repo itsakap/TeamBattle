@@ -1,5 +1,6 @@
 class TeamCaptain::TeamsController < ApplicationController
   before_action :set_team
+  before_action :login_required!
   before_action :team_captain_required!
   def show
 
@@ -17,9 +18,11 @@ class TeamCaptain::TeamsController < ApplicationController
   def remove_user_from_team
     user = User.find(params[:user_id])
     # if not trying to remove self and if user is on self's team
-    if user.team_id == current_user.team_id && user.id != current_user.id
+    if user.team_id == current_user.team_id && user.id != current_user.id  && !current_game
 
       @team.users.delete(user) # remove from team
+      user.update(:game_id => nil)
+      
       flash[:notice] = "Removed #{user.name} from team"
     else
       flash[:error] = "Sorry"

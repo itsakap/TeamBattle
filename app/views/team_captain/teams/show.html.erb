@@ -21,14 +21,11 @@
 
 <div id="teammates">
   <ul>
-  <%= @team.users.each do |u| %>
-    <li><%= u.name %> <%= "(#{u.email})" %>)
-      <ul>
-        <li>HP: <%= u.hp %></li>
-        <li>Attack: <%= u.attack_power %></li>
-        <li>Heal: <%= u.heal_power %></li>
-      </ul>
-      <%= button_to "Remove #{u.name} from team", team_captain_remove_user_path(@team, u), method: :patch %>
+  <% @team.users.each do |u| %>
+    <li><%= u.name %><%= "(#{u.email})" %><%= " (you)" if u.id == current_user.id %>
+      <% if u.id != current_user.id  && !current_game%>
+        <%= button_to "Remove #{u.name} from team", team_captain_remove_user_path(@team, u), method: :patch %>
+      <% end %>
     </li>
   <% end %>
   </ul>

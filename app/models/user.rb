@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # RELATIONS
   belongs_to :team
   belongs_to :game
-  has_one :move, dependent: :destroy  # destroys the associated move
+  has_one :move, dependent: :delete  # destroys the associated move
   # VALIDATIONS
   validates_presence_of :email
   validates_presence_of :name
@@ -27,11 +27,20 @@ class User < ActiveRecord::Base
       errors.add(:x, "cannot sum with y and z to exceed 10")
     end
   end
+  
+  def starting_hp
+    100 + (10*x)
+  end
+
+  def attack_power
+    20+y
+  end
+  def heal_power
+    20+z
+  end
 
   def set_stats
-    self.hp = 200 + (10*x)
-    self.attack_power = 20 + y
-    self.heal_power = 20 + z
+    self.hp = starting_hp
     self.build_move
   end 
 

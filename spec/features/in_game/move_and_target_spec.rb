@@ -17,7 +17,7 @@ feature 'choose move and target opponent player', :js => true do
   end
 
   scenario 'game has begun, and user a decides to attack user c on the first night' do
-    select('Attack', :from => "move[move_choice]")
+    select('attack', :from => "move[move_choice]")
     select(user_c.name, :from => "move[target]")
     click_button "Update Move"
     expect(page).to have_content("Move was updated.")
@@ -25,9 +25,9 @@ feature 'choose move and target opponent player', :js => true do
   end
 
   scenario 'user a changes his mind, and decides to heal teammate user b' do
-    select('Heal', :from => "move[move_choice]")
+    select('heal', :from => "move[move_choice]")
     select(user_b.name, :from => "move[target]")
     click_button "Update Move"
-    expect(page).to have_content("Move was updated")
+    expect(page).to have_content("Move was updated. Check back tomorrow for updates in your game.")
   end
 end

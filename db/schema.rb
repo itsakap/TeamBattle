@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211224715) do
+ActiveRecord::Schema.define(version: 20141217211126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,8 +57,6 @@ ActiveRecord::Schema.define(version: 20141211224715) do
     t.integer  "z",               default: 0
     t.integer  "team_id"
     t.integer  "hp"
-    t.integer  "attack_power"
-    t.integer  "heal_power"
     t.integer  "game_id"
   end
 

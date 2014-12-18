@@ -4,13 +4,14 @@ class Player::GamesController < ApplicationController
   before_action :game_started!
   # this action returns an object containing all of the legal targets given move choice
   def target_team_users
+    targets = {current_target:current_user.move.target}
     move_type = params[:move_choice]
-    if move_type == "Attack"
-      targets = current_game.users.alive - current_team.users.alive
-    elsif move_type == "Heal"
-      targets = current_team.users.alive
+    if move_type == "attack"
+      targets['legal_targets'] = current_game.users.alive - current_team.users.alive
+    elsif move_type == "heal"
+      targets['legal_targets'] = current_team.users.alive
     else
-      targets = []
+      targets['legal_targets'] = []
     end
     render json: targets
       

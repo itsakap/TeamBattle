@@ -22,6 +22,6 @@ class Move < ActiveRecord::Base
   def illegal_target?
     current_user = User.find(user_id)
     target_user = User.find(target)
-    (move_choice == "Attack" && current_user.team_id == target_user.team_id) || (move_choice == "Heal" && current_user.team_id != target_user.team_id) || target_user.eliminated?
+    (move_choice == "Attack" && current_user.team_id == target_user.team_id) || (move_choice == "Heal" && current_user.team_id != target_user.team_id) || target_user.eliminated? || current_user.game_id != target_user.game_id
   end
 end

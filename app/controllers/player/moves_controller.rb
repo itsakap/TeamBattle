@@ -7,12 +7,16 @@ class Player::MovesController < ApplicationController
   end
 
   def update
+    if current_user.eliminated?
+      flash[:alert] = "Sorry, you have been eliminated."
+      redirect_to root_path
+    end
     if @move.update(move_params)
-      flash[:notice] = "Move was updated."
+      flash[:notice] = "Move was updated. Check back tomorrow for updates in your game."
     else
       flash[:alert] = "Sorry"
     end
-    redirect_to root_path
+    redirect_to player_move_path
   end
 
   private
@@ -24,9 +28,5 @@ class Player::MovesController < ApplicationController
   end
   def set_move
     @move = current_user.move
-    if current_user.eliminated?
-      flash[:alert] = "Sorry, you have already been eliminated."
-      redirect_to root_path
-    end
   end
 end

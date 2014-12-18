@@ -54,7 +54,7 @@ describe User do
   describe 'stats' do
     it 'calculates hp, attack_power, and heal_power based on x, y, z values respectively' do
       user = FactoryGirl.create(:user)
-      expect(user.hp).to eq(200 + (10 * user.x))
+      expect(user.hp).to eq(100 + (10 * user.x))
       expect(user.attack_power).to eq(20 + user.y)
       expect(user.heal_power).to eq(20 + user.z)
     end

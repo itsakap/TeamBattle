@@ -3,7 +3,6 @@
 <head>
   <title>TeamBattle</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -20,21 +19,20 @@
           <br>
           <%= link_to "Join Game", team_captain_games_path %>
           <br>
-          <!-- unless no games to join -->
         <% end %>
         <%= link_to "Team Captain", team_captain_team_path(current_user.team_id) %>
         <br>
       <% end %>
       <% if current_game %>
         <% in_game_only do %>
-          <%= link_to "My Game", player_move_path %>
+          <%= link_to "My Game (#{current_game.name})", player_move_path %>
           <br>
         <% end %>
       <% end %>
       <% unless current_team %>
         <%= link_to "Create team", new_team_path %>
       <% else %>
-        <%= link_to "My Team", current_team %>
+        <%= link_to "My Team (#{current_team.name})", current_team %>
       <% end %>
       <br>
       <%= link_to "View & Join a Team", teams_path %>
@@ -60,5 +58,6 @@
         target: "_blank" %>
     </i>
   </footer>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
