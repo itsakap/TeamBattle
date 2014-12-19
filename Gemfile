@@ -43,6 +43,7 @@ gem 'whenever', :require => false
 
 group :deveopment, :production do
   gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end
 
 group :test, :development do
