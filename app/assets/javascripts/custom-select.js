@@ -22,7 +22,7 @@ $(document).ready(function() {
           $.each(data.legal_targets, function (i, object) {
             observer.attr('disabled', false);
             observer.append($('<option>').attr('value', object[key_method]).text(object[value_method]));
-            if(i == 0){
+            if(i == 1){
               observer.val(data.current_target ? data.current_target : object[key_method]);
             }
           });

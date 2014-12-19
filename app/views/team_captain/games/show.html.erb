@@ -5,4 +5,5 @@
   <li><%= team.name %></li>
 <% end %>
 </ul>
-<%= button_to "Join #{@game.name}", team_captain_join_game_path(@game), :method => :patch %>
+<%= button_to "Join #{@game.name}", team_captain_join_game_path(@game),
+    {:method => :patch, :class => 'btn btn-primary'} unless current_game %>

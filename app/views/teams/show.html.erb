@@ -8,5 +8,5 @@
   <% end %>
 </ol>
 <% unless current_team %>
-  <%= button_to "Join team", @team, {method: :put} %>
+  <%= button_to "Join team", @team, {method: :put, class: "btn btn-primary"} %>
 <% end %>

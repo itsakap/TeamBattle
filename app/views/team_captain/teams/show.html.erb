@@ -13,14 +13,17 @@
      </ul>
    </div>
   <% end %>
-  <%= f.label :name, "Team Name" %>
-  <%= f.text_field :name %>
+  <p class="form-group">
+    <%= f.label :name, "Team Name" %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </p>
 
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>
 
-<div id="teammates">
-  <ul>
+<div id="teammates" style="margin-top:20px">
+  <h4>Team:</h4>
+  <ol>
   <% @team.users.each do |u| %>
     <li><%= u.name %><%= "(#{u.email})" %><%= " (you)" if u.id == current_user.id %>
       <% if u.id != current_user.id  && !current_game%>
@@ -28,5 +31,5 @@
       <% end %>
     </li>
   <% end %>
-  </ul>
+  </ol>
 </div>

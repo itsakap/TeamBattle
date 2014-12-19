@@ -3,61 +3,58 @@
 <head>
   <title>TeamBattle</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "cerulean", media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav>
-    <%= link_to "Home", root_path %>
-    <br>
-    <% if current_user %>
-      Signed in as <%=  "#{current_user.name} (#{current_user.email})" %>
-      <%= link_to "Sign out", sign_out_path, method: :delete %>
-      <br>
-      <% team_captains_only do %>
-        <% unless current_game %>
-          <%= link_to "New Game", new_team_captain_game_path %>
-          <br>
-          <%= link_to "Join Game", team_captain_games_path %>
-          <br>
-        <% end %>
-        <%= link_to "Team Captain", team_captain_team_path(current_user.team_id) %>
-        <br>
-      <% end %>
+  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+    <nav>
+      <%= "Signed in as #{current_user.name} (#{current_user.email})" if current_user %>
+      <ul class="nav nav-pills">
+        <li><%= link_to "Home", root_path %></li>
+        <% if current_user %>
+          <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+          <% team_captains_only do %>
+            <% unless current_game %>
+              <li><%= link_to "New Game", new_team_captain_game_path %></li>
+              <li><%= link_to "Join Game", team_captain_games_path %></li>
+            <% end %>
+            <li><%= link_to "Team Captain", team_captain_team_path(current_user.team_id) %></li>
+          <% end %>
       <% if current_game %>
         <% in_game_only do %>
-          <%= link_to "My Game (#{current_game.name})", player_move_path %>
-          <br>
+          <li><%= link_to "My Game (#{current_game.name})", player_move_path %></li>
         <% end %>
       <% end %>
       <% unless current_team %>
-        <%= link_to "Create team", new_team_path %>
+        <li><%= link_to "Create team", new_team_path %></li>
       <% else %>
-        <%= link_to "My Team (#{current_team.name})", current_team %>
+        <li><%= link_to "My Team (#{current_team.name})", current_team %></li>
       <% end %>
-      <br>
-      <%= link_to "View & Join a Team", teams_path %>
+      <li><%= link_to "View & Join a Team", teams_path %></li>
     <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <br>
-      <%= link_to "Sign in", sign_in_path %>
-      <br>
+      <li><%= link_to "Sign up", new_user_path %></li>
+      <li><%= link_to "Sign in", sign_in_path %></li>
     <% end %>
-  </nav>
-  <% flash.each do |key, value| %>
-  <div class='flash' id='<%= key %>'>
-    <%= value %>
-  </div>
-<% end %>
-  <%= yield %>
+    </nav>
+    <% alert = {:notice => 'alert-success', :alert => 'alert-warning', :error => 'alert-danger'} %>
+    <% flash.each do |key, value| %>
+      <div class="flash alert alert-dismissable <%= alert[key.to_sym] %>" id='<%= key %>'>
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <%= value %>
+      </div>
+    <% end %>
+    <%= yield %>
 
-  <footer>
-    <i>
-    Made by some buddy from California named <%= link_to "Adam", "http://www.itsakap.com", target: "_blank" %>.  
-    <%= link_to "View this project's GitHub repo",
-        "http://www.github.com/adamhkaplan/TeamBattle",
-        target: "_blank" %>
-    </i>
-  </footer>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <footer style="margin: 40px 0 20px">
+      <i>
+      An <%= link_to "Adam Kaplan", "http://www.itsakap.com", target: "_blank" %> creation. &copy; 2014 itsakap LLC.  
+      <%= link_to "View this project's GitHub repo",
+          "http://www.github.com/adamhkaplan/TeamBattle",
+          target: "_blank" %>
+      </i>
+    </footer>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </div>
 </body>
 </html>

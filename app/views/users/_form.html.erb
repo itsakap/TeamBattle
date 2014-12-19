@@ -9,45 +9,45 @@
     </ul>
   </div>
   <% end %>	  
-  <p>
+  <p class="form-group">
     <%= f.label :name, "Name" %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </p>
-  <p>
+  <p class="form-group">
     <%= f.label :email, "Email" %><br>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, class: 'form-control' %>
   </p>
   
-  <p>
+  <p class="form-group">
     <%= f.label :password, "Password" %><br>
-    <%= f.password_field :password %>  
+    <%= f.password_field :password, class: 'form-control' %>  
   </p>
 
-  <p>
+  <p class="form-group">
     <%= f.label :password_confirmation, "Password Confirmation" %><br>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
   </p>
 
-  <p><strong>For the next section, x+y+z must be less than or equal to 10.  All 3 numbers must be non-negative.</strong></p>
+  <p><strong>For the next section, x+y+z must be less than or equal to 10. All 3 numbers must be non-negative.</strong></p>
 
-  <p>
+  <p class="form-group">
     <%= f.label :x, "HP = 100 + (10 * x), where x is number below" %><br>
-    <%= f.number_field :x, placeholder:"x" %>
+    <%= f.number_field :x, placeholder:"x", class: 'form-control' %>
   </p>
 
-  <p>
+  <p class="form-group">
     <%= f.label :y, "Attack Power = 20 + y, where y is number below" %><br>
-    <%= f.number_field :y, placeholder:"y" %>
+    <%= f.number_field :y, placeholder:"y", class: 'form-control' %>
   </p>
 
-  <p>
+  <p class="form-group">
     <%= f.label :z, "Heal Power = 20 + z, where z is number below" %><br>
-    <%= f.number_field :z, placeholder:"z" %>
+    <%= f.number_field :z, placeholder:"z", class: 'form-control' %>
   </p>
 
 
-  <p>
-    <%= f.submit @user.new_record? ? "Sign up" : "Update Profile"%>
+  <p class="form-group">
+    <%= f.submit @user.new_record? ? "Sign up" : "Update Profile", class: 'btn btn-primary' %>
   </p>
 
 <% end %>

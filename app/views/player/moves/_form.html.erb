@@ -1,13 +1,23 @@
 <!-- _form.html.erb -->
 <%= form_for [:player, @move] do |f| %>
-  <%= f.select :move_choice, ["attack","heal","defend","surrender"], {include_blank: false},{class: "move-choice", prompt: "Choose a Move"} %>
-  <%= f.select :target, options_from_collection_for_select([], "id", "name"),
-  {
-     include_blank: false
-  }, {     'data-option-dependent' => true,
+  <p class="form-group">
+    <%= f.select :move_choice, ["attack","heal","defend","surrender"], {include_blank: false},{class: "form-control move-choice", prompt: "Choose a Move"} %>
+  </p>
+  <p class="form-group">
+    <%= f.select :target, options_from_collection_for_select([], "id", "name"),
+    {
+      include_blank: false
+    },
+    {
+     'class' => 'form-control',
+     'prompt' => 'Choose a Target',
+     'data-option-dependent' => true,
      'data-option-observed' => "move_move_choice",
      'data-option-url' => "/player/target/:move_choice:.json",
      'data-option-key-method' => :id,
-     'data-option-value-method' => :name}%>
-  <%= f.submit %>
+     'data-option-value-method' => :name
+   }
+    %>
+   </p>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>

@@ -6,7 +6,7 @@
 <% end %>
 <h3>Summary for <%= Date.today %></h3>
 <% if current_game.teams.alive.size <= 1 %>
-  <%= current.game.teams.alive.size == 1 ? "current.game.teams.alive[0].name wins!" : "No teams are left standing.  Draw game." %>
+  <%= current_game.teams.alive.size == 1 ? "#{current_game.teams.alive[0].name} wins!" : "No teams are left standing.  Draw game." %>
   GAME OVER
 
 <% end %>
@@ -14,18 +14,18 @@
 <% current_game.teams.each do |team| %>
   <li style="margin-bottom:20px">
     <strong>
-      <%= team.name %> <%= current_team.id == team.id ? "(your team)" : "(enemy team)" %>
+      <%= team.name %> <%= current_team.id == team.id ? "(your team)" : "(enemy team)" %> <%= "(ELIMINATED)" if team.eliminated? %>
     </strong>
     <ol>
       <% team.users.each do |user| %>
-        <li><%= user.name  %><%= "- #{user.email}" + " (captain)" if user.captain? %><%= " (you)" if current_user.id == user.id %>
+        <li><%= user.name  %><%= "- #{user.email}" + " (captain)" if user.captain? %><%= " (you)" if current_user.id == user.id %> <%= "(ELIMINATED)" if user.eliminated? %>
           <ul>
             <% if current_team.id == team.id %>
               <li>HP: <%= user.hp %></li>
               <li>Attack Power: <%= user.attack_power %></li>
               <li>Heal Power: <%= user.heal_power %></li>
             <% end %>
-            <li>∆HP: <%= user.hp - user.starting_hp %> <%= "(ELIMINATED)" if user.eliminated? %></li>
+            <li>∆HP: <%= user.hp - user.starting_hp %></li>
           </ul>
         </li>
       <% end %>

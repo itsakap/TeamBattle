@@ -11,11 +11,11 @@
      </ul>
    </div>
   <% end %>
-  <p>
+  <p class="form-group">
     <%= f.label :name, "Team Name" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </p>
 <% end %>
