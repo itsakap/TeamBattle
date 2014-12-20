@@ -5,13 +5,17 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "cerulean", media: 'all' %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
 <body>
-  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-    <nav>
+  
+    <div class='navbar navbar-default navbar-static-top'><div class="container">
       <%= "Signed in as #{current_user.name} (#{current_user.email})" if current_user %>
-      <ul class="nav nav-pills">
-        <li><%= link_to "Home", root_path %></li>
+      <ul class="nav navbar-nav">
+        <%= link_to "Team Battle", root_path, class:"navbar-brand" %>
         <% if current_user %>
           <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
           <% team_captains_only do %>
@@ -21,22 +25,23 @@
             <% end %>
             <li><%= link_to "Team Captain", team_captain_team_path(current_user.team_id) %></li>
           <% end %>
-      <% if current_game %>
-        <% in_game_only do %>
-          <li><%= link_to "My Game (#{current_game.name})", player_move_path %></li>
+          <% if current_game %>
+            <% in_game_only do %>
+              <li><%= link_to "My Game (#{current_game.name})", player_move_path %></li>
+            <% end %>
+          <% end %>
+          <% unless current_team %>
+            <li><%= link_to "Create team", new_team_path %></li>
+          <% else %>
+            <li><%= link_to "My Team (#{current_team.name})", current_team %></li>
+          <% end %>
+          <li><%= link_to "View & Join a Team", teams_path %></li>
+        <% else %>
+          <li><%= link_to "Sign up", new_user_path %></li>
+          <li><%= link_to "Sign in", sign_in_path %></li>
         <% end %>
-      <% end %>
-      <% unless current_team %>
-        <li><%= link_to "Create team", new_team_path %></li>
-      <% else %>
-        <li><%= link_to "My Team (#{current_team.name})", current_team %></li>
-      <% end %>
-      <li><%= link_to "View & Join a Team", teams_path %></li>
-    <% else %>
-      <li><%= link_to "Sign up", new_user_path %></li>
-      <li><%= link_to "Sign in", sign_in_path %></li>
-    <% end %>
-    </nav>
+    </div></div>
+    <div class="row col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
     <% alert = {:notice => 'alert-success', :alert => 'alert-warning', :error => 'alert-danger'} %>
     <% flash.each do |key, value| %>
       <div class="flash alert alert-dismissable <%= alert[key.to_sym] %>" id='<%= key %>'>
@@ -46,7 +51,7 @@
     <% end %>
     <%= yield %>
 
-    <footer style="margin: 40px 0 20px">
+    <footer style="margin: 40px 0 20px; text-align:center">
       <i>
       An <%= link_to "Adam Kaplan", "http://www.itsakap.com", target: "_blank" %> creation. &copy; 2014 itsakap LLC.  
       <%= link_to "View this project's GitHub repo",
@@ -54,6 +59,7 @@
           target: "_blank" %>
       </i>
     </footer>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </div>
 </body>
