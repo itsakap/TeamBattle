@@ -9,7 +9,7 @@ feature 'hiding team building links' do
     scenario 'cannot see Team Building links' do
       visit '/'
       assert_no_link_for 'Create team'
-      assert_no_link_for 'View & Join a Team'
+      assert_no_link_for 'Join a Team'
     end
 
   end
@@ -19,11 +19,11 @@ feature 'hiding team building links' do
     scenario 'can see Team Building links only if not on a team' do
       visit '/'
       assert_link_for 'Create team'
-      click_link 'View & Join a Team'
+      click_link 'Join a Team'
       click_link team.name
       click_button "Join team"
       assert_no_link_for 'Create team'
-      click_link 'View & Join a Team'
+      click_link 'List Teams'
       click_link team.name
       assert_no_button_for "Join team"
     end
@@ -34,7 +34,7 @@ feature 'hiding team building links' do
     scenario 'cannot see Team Building links (already on a team!)' do
       visit '/'
       assert_no_link_for 'Create team'
-      click_link 'View & Join a Team'
+      click_link 'List Teams'
       click_link team.name
       assert_no_button_for "Join team"
     end

@@ -35,7 +35,7 @@
           <% else %>
             <li><%= link_to "My Team (#{current_team.name})", current_team %></li>
           <% end %>
-          <li><%= link_to "View & Join a Team", teams_path %></li>
+          <li><%= link_to "#{current_team ? 'List Teams' : 'Join a Team'}", teams_path %></li>
         <% else %>
           <li><%= link_to "Sign up", new_user_path %></li>
           <li><%= link_to "Sign in", sign_in_path %></li>

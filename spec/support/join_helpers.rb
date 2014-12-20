@@ -1,7 +1,7 @@
 # join_helpers.rb
 module JoinHelpers
   def join_team!(team)
-    click_link 'View & Join a Team'
+    click_link 'Join a Team'
     click_link team.name
     click_button "Join team"
     expect(page).to have_content("Successfully joined team. You are now a member of this team: #{team.name}")
