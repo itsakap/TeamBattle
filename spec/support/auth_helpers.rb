@@ -2,6 +2,7 @@
 module AuthHelpers
   def sign_in(user)
     session[:user_id] = user.id
+    session[:team_id] = user.team_id
   end
   def sign_in_as!(user)
     visit '/sign_in'

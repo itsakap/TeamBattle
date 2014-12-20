@@ -20,6 +20,6 @@
 7. Game ends when one team is left uneliminated.
 
 == To do
-- cron job for calculating all users' moves in a game
-- elimination conditions
-- win conditions
+- More fine-grained authorization
+- Join Tbl for users & teams, or teams & games (includes stats)
+- Fine-grain auth for joining multiple teams/games

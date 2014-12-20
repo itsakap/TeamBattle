@@ -26,7 +26,7 @@ class TeamsController < ApplicationController
 
   end
 
-  def update
+  def update # for joining a team; could have been replicated in a join model.
     @team.users.push(current_user) # join this team
     session[:team_id] = @team.id # set it as the current_team
     current_user.update(:game_id => @team.game_id)
@@ -40,7 +40,7 @@ class TeamsController < ApplicationController
   end
   def set_team
     @team = Team.find(params[:id])
-    if @team.started?
+    if @team.started? && @team.id != current_team.id
       flash[:alert] = "This team currently has a game in progress."
       redirect_to teams_path
     end
