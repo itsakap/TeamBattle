@@ -16,7 +16,7 @@ feature "Signing Up" do
   end
 
   scenario 'x+y+z exceeds stats_sum_maximum' do
-    fill_in "x", with: User.stats_sum_maximum+1
+    fill_in "x", with: User.stats_sum_maximum+2
     click_button "Sign up"
     expect(page).to have_content("Player could not be created.")
   end

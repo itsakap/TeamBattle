@@ -21,6 +21,9 @@ class UsersController < ApplicationController
 
   private
   def user_params
+    params[:user][:x] = 0 if params[:user][:x] == ""
+    params[:user][:y] = 0 if params[:user][:y] == ""
+    params[:user][:z] = 0 if params[:user][:z] == ""
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :x, :y, :z)
   end
   def set_user
