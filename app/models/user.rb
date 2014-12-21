@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   # VALIDATIONS
   validates_presence_of :email
   validates_presence_of :name
+  validates_presence_of :x
+  validates_presence_of :y
+  validates_presence_of :z
   validate :stats_sum_does_not_exceed_max
   validates :x, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
   validates :y, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
